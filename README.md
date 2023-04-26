@@ -1,87 +1,30 @@
-# Code Challange
+# Case Bank of America
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CaseBankOfAmerica é uma aplicação web simples que exibe dados financeiros em formato de tabela. Os usuários podem pesquisar dados específicos inserindo um termo de pesquisa na caixa de busca.
 
-## Challenge Description
+Tecnologias usadas:
+- React
+- Material-UI V.5
 
-The challenge is to create two different routes inside the application “/table” and “/user” where:
 
-"/table":
+Overview:
 
-- You should be able to create a table and present the data coming from the backend in realtime. Each new data that arrives must be inserted into the table.
-- The candidate must create a search input on the same page that will filter this information within the table.
+Esta é uma aplicação React que usa a biblioteca Material-UI para estilização. Ela importa vários componentes do Material-UI, incluindo Card, CardContent, Typography, Box e Container. Também importa vários componentes do React Router, incluindo Routes, Route e BrowserRouter.
 
-An example that you can use for guidance:
+O componente App configura uma conexão de socket com um servidor usando socket.io-client e escuta dois eventos: "client-connected" e "market-data". Quando o evento "client-connected" é recebido, as informações do cliente são definidas usando setClient. Quando o evento "market-data" é recebido, os dados do mercado são adicionados a uma matriz usando setMarketData.
 
-<p>
-    <img src="public/wireframe_01.png"  alt="Main"/> 
-</p>
+O componente App também renderiza uma NavBar, que inclui links para a página inicial, uma página de informações pessoais (componente Card) e uma página de transações financeiras (componente Table). Os componentes Card e Table são renderizados usando os componentes Routes e Route do React Router.
 
-"/user":
 
-- The candidate must create a card presenting the information of the connected user into the server.
+Features:
+- Tabela de transações financeiras: 
 
-An example that you can use for guidance:
+O componente Table exibe dados financeiros em um formato de tabela e permite que os usuários pesquisem por dados específicos por meio de uma caixa de pesquisa.
 
-<p>
-    <img src="public/wireframe_02.png"  alt="Profile"/>
-</p>
+Este componente recebe uma prop data que é um array contendo os dados financeiros a serem exibidos. Ele utiliza o estado do React para controlar o valor de uma caixa de pesquisa, permitindo que o usuário filtre os dados conforme o termo pesquisado é inserido.
 
-### Must have:
-- use this repo as a boilerplate of your project 
+O componente exibe os dados em uma tabela usando a biblioteca Material-UI. Ele possui recursos de estilo responsivos e amigáveis ao usuário, como uma barra de pesquisa e uma tabela com cabeçalho fixo que permanece no topo da página enquanto o usuário rola para baixo.
 
-- Use [Material-ui v5](https://mui.com/) for construct your components.
+- Card com informação pessoal:
 
-- [React/hooks](https://reactjs.org/docs/hooks-intro.html)
-
-- On the day of the interview you should have the project running on your local machine for a presentation.
-
-## Additional information
-
-- The backend is already built.
-- You can use it as a data source, the client will be connected to the socket in real time. 
-- You will receive in an interval of 0 and 10 seconds a new response with the financial data and you should use this information to build the table.
-
-JSON schema for market data:
-
-```json
-{
-  "account_name": "Personal Loan Account",
-  "amount": "890.86",
-  "credit_card_cvv": "248",
-  "credit_card_issuer": "maestro",
-  "credit_card_number": "6370-9605-9936-9733",
-  "currency_name": "Pataca",
-  "transaction_description": "payment transaction at Greenfelder",
-  "transaction_type": "withdrawal"
-}
-```
-
-JSON schema for client connected:
-
-```json
-{
-  "client_id": "irZP2T8dsRl1kpCnAAAB",
-  "first_name": "Otilia",
-  "job": "Forward Accounts Strategist",
-  "job_descriptor": "Regional"
-}
-```
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm run server`
-
-Launches the realtime server for provide data.\
-Open [http://localhost:3003](http://localhost:3003) to get json response.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.
+O StyledCard é um componente React que exibe informações de um cliente em um cartão. Ele é construído com base no componente Card do Material-UI e contém informações sobre o ID do cliente, nome, trabalho e descrição do trabalho.
