@@ -27,11 +27,11 @@ let intervalId = null;
 
 const recursiveInterval = (
   skt = null,
-  intervalTime = faker.random.numeric(4)
+  intervalTime = faker.random.number(4000)
 ) => {
-  intervalId = setInterval(() => {
-    intervalId && clearInterval(intervalId);
+  clearInterval(intervalId);
 
+  intervalId = setInterval(() => {
     skt.emit("market-data", {
       account_name: faker.finance.accountName(),
       transaction_type: faker.finance.transactionType(),
@@ -42,10 +42,9 @@ const recursiveInterval = (
       amount: faker.finance.amount(),
       currency_name: faker.finance.currencyName(),
     });
-
-    recursiveInterval(skt);
   }, intervalTime);
 };
+
 
 io.on("connection", (skt) => {
   const client = {
